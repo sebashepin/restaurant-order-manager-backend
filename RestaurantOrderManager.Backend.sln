@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantOrderManager.Backend.Proto", "src\RestaurantOrderManager.Backend.Proto\RestaurantOrderManager.Backend.Proto.csproj", "{29749208-9B45-4D75-A49C-9C9B36605A63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{2A7EEF41-4624-4376-8E0F-7C796C5324F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A7EEF41-4624-4376-8E0F-7C796C5324F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A7EEF41-4624-4376-8E0F-7C796C5324F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29749208-9B45-4D75-A49C-9C9B36605A63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29749208-9B45-4D75-A49C-9C9B36605A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29749208-9B45-4D75-A49C-9C9B36605A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29749208-9B45-4D75-A49C-9C9B36605A63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

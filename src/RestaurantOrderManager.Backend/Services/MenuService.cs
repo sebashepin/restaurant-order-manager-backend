@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using RestaurantOrderManager.Backend.Grpc;
 
 namespace RestaurantOrderManager.Backend.Services;
 

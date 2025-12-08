@@ -1,6 +1,6 @@
 ﻿syntax = "proto3";
 
-option csharp_namespace = "RestaurantOrderManager.Backend";
+option csharp_namespace = "RestaurantOrderManager.Backend.Grpc";
 
 package menu;
 

@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        
+        <!-- NuGet Package Metadata -->
+        <PackageId>RestaurantOrderManager.Backend.Proto</PackageId>
+        <Title>Restaurant Order Manager - gRPC Backend with Middleware</Title>
+        <Version>1.0.0</Version>
+        <Description>Complete gRPC backend service for Restaurant Order Manager. Includes protocol buffer definitions, generated C# stubs, service implementations, and ready-to-use middleware for ASP.NET Core integration. Provides menu management and ordering capabilities with built-in CORS and gRPC-Web support.</Description>
+        <Authors>Restaurant Order Manager Team</Authors>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/your-org/restaurant-order-manager-backend</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/your-org/restaurant-order-manager-backend</PackageProjectUrl>
+        <PackageTags>grpc;proto;middleware;restaurant;order-manager;aspnetcore</PackageTags>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Protobuf Include="Proto\menu.proto">
+        <GrpcServices>Server</GrpcServices>
+        <Access>Public</Access>
+        <ProtoCompile>True</ProtoCompile>
+        <CompileOutputs>True</CompileOutputs>
+        <OutputDir>obj\Debug\net10.0\</OutputDir>
+        <Generator>MSBuild:Compile</Generator>
+      </Protobuf>
+      <None Include="Proto\menu.proto" Pack="true" PackagePath="Proto\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
+      <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+</Project>
