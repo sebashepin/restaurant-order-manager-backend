@@ -1,14 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
+        <!-- Target netstandard to maximize compatibility, including Blazor WebAssembly (browser-wasm) -->
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         
         <!-- NuGet Package Metadata -->
         <PackageId>RestaurantOrderManager.Backend.Proto</PackageId>
         <Title>Restaurant Order Manager - gRPC Backend with Middleware</Title>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <Description>Complete gRPC backend service for Restaurant Order Manager. Includes protocol buffer definitions, generated C# stubs, service implementations, and ready-to-use middleware for ASP.NET Core integration. Provides menu management and ordering capabilities with built-in CORS and gRPC-Web support.</Description>
         <Authors>Restaurant Order Manager Team</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -19,22 +21,23 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
       <Protobuf Include="Proto\menu.proto">
-        <GrpcServices>Server</GrpcServices>
+        <!-- Generate both client and server stubs so consumers can choose; works with Grpc.Core.Api and does not require ASP.NET -->
+        <GrpcServices>Both</GrpcServices>
         <Access>Public</Access>
-        <ProtoCompile>True</ProtoCompile>
         <CompileOutputs>True</CompileOutputs>
-        <OutputDir>obj\Debug\net10.0\</OutputDir>
-        <Generator>MSBuild:Compile</Generator>
       </Protobuf>
       <None Include="Proto\menu.proto" Pack="true" PackagePath="Proto\" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
-      <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <!-- Only the minimal dependencies required for generated code. Avoid Grpc.Net.Client to keep WASM-friendly. -->
+        <PackageReference Include="Google.Protobuf" Version="3.30.2" />
+        <PackageReference Include="Grpc.Core.Api" Version="2.46.6" />
+        <PackageReference Include="Grpc.Tools" Version="2.76.0" PrivateAssets="All" />
     </ItemGroup>
 </Project>
