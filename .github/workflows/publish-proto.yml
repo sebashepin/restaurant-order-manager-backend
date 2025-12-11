@@ -30,7 +30,11 @@ jobs:
           cache-dependency-path: 'src/RestaurantOrderManager.Backend.Proto/packages.lock.json'
 
       - name: Restore
-        run: dotnet restore RestaurantOrderManager.Backend.sln
+        run: dotnet restore src/RestaurantOrderManager.Backend.Proto/RestaurantOrderManager.Backend.Proto.csproj
+        
+      - name: Build
+        run: dotnet build src/RestaurantOrderManager.Backend.Proto/RestaurantOrderManager.Backend.Proto.csproj \
+          -c Release --no-restore
 
       - name: Pack Proto project
         run: |
