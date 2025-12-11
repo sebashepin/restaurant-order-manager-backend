@@ -1,0 +1,64 @@
+name: Publish Proto NuGet Package
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/RestaurantOrderManager.Backend.Proto/**'
+      - '.github/workflows/publish-proto.yml'
+  workflow_dispatch: {}
+
+concurrency:
+  group: proto-nuget-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  pack-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x'
+          cache: true
+
+      - name: Restore
+        run: dotnet restore RestaurantOrderManager.Backend.sln
+
+      - name: Pack Proto project
+        run: |
+          dotnet pack src/RestaurantOrderManager.Backend.Proto/RestaurantOrderManager.Backend.Proto.csproj \
+            -c Release \
+            -o nupkg \
+            --no-restore
+
+      - name: Publish package (.nupkg)
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          if [ -z "${NUGET_API_KEY}" ]; then echo "Missing NUGET_API_KEY secret" && exit 1; fi
+          dotnet nuget push "nupkg/*.nupkg" \
+            --api-key "$NUGET_API_KEY" \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
+
+      - name: Publish symbols (.snupkg)
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          shopt -s nullglob
+          files=(nupkg/*.snupkg)
+          if [ ${#files[@]} -gt 0 ]; then
+            dotnet nuget push "nupkg/*.snupkg" \
+              --api-key "$NUGET_API_KEY" \
+              --source https://api.nuget.org/v3/index.json \
+              --skip-duplicate
+          else
+            echo "No .snupkg files to publish"
+          fi

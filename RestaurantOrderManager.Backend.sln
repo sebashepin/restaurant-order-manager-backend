@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 		.gitignore = .gitignore
+		.github\workflows\ci.yml = .github\workflows\ci.yml
+		.github\workflows\publish-proto.yml = .github\workflows\publish-proto.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantOrderManager.Backend.Proto", "src\RestaurantOrderManager.Backend.Proto\RestaurantOrderManager.Backend.Proto.csproj", "{29749208-9B45-4D75-A49C-9C9B36605A63}"
