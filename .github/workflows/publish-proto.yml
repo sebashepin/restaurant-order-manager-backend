@@ -2,7 +2,7 @@ name: Publish Proto NuGet Package
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'src/RestaurantOrderManager.Backend.Proto/**'
       - '.github/workflows/publish-proto.yml'
@@ -33,8 +33,7 @@ jobs:
         run: dotnet restore src/RestaurantOrderManager.Backend.Proto/RestaurantOrderManager.Backend.Proto.csproj
         
       - name: Build
-        run: dotnet build src/RestaurantOrderManager.Backend.Proto/RestaurantOrderManager.Backend.Proto.csproj \
-          -c Release --no-restore
+        run: dotnet build -c Release --no-restore src/RestaurantOrderManager.Backend.Proto/RestaurantOrderManager.Backend.Proto.csproj
 
       - name: Pack Proto project
         run: |

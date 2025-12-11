@@ -2,14 +2,14 @@ name: CI - Build and Test Backend
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'src/RestaurantOrderManager.Backend/**'
       - 'src/RestaurantOrderManager.Backend.Test/**'
       - 'RestaurantOrderManager.Backend.sln'
       - '.github/workflows/ci.yml'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'src/RestaurantOrderManager.Backend/**'
       - 'src/RestaurantOrderManager.Backend.Test/**'
