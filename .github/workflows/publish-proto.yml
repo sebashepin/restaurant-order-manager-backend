@@ -27,6 +27,7 @@ jobs:
         with:
           dotnet-version: '10.x'
           cache: true
+          cache-dependency-path: 'src/RestaurantOrderManager.Backend.Proto/packages.lock.json'
 
       - name: Restore
         run: dotnet restore RestaurantOrderManager.Backend.sln
