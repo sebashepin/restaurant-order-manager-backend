@@ -44,7 +44,7 @@ jobs:
 
       - name: Publish package (.nupkg)
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          NUGET_API_KEY: ${{secrets.GITHUB_TOKEN}}
         run: |
           if [ -z "${NUGET_API_KEY}" ]; then echo "Missing NUGET_API_KEY secret" && exit 1; fi
           dotnet nuget push "nupkg/*.nupkg" \
@@ -54,7 +54,7 @@ jobs:
 
       - name: Publish symbols (.snupkg)
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          NUGET_API_KEY: ${{secrets.GITHUB_TOKEN}}
         run: |
           shopt -s nullglob
           files=(nupkg/*.snupkg)
