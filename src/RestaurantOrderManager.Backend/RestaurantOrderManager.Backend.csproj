@@ -10,10 +10,7 @@
     <ItemGroup>
         <PackageReference Include="Grpc.AspNetCore" Version="2.71.0" />
         <PackageReference Include="Grpc.AspNetCore.Web" Version="2.71.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\RestaurantOrderManager.Backend.Proto\RestaurantOrderManager.Backend.Proto.csproj" />
+        <PackageReference Include="RestaurantOrderManager.Backend.Proto" Version="1.0.2" />
     </ItemGroup>
 
 </Project>
