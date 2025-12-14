@@ -1,4 +1,4 @@
-name: CI - Build and Test Backend
+name: Build and Test
 
 on:
   push:
@@ -28,6 +28,7 @@ jobs:
         with:
           dotnet-version: '10.x'
           cache: true
+          cache-dependency-path: '**/packages.lock.json'
           
       - name: Add nuget source
         run: dotnet nuget add source --username sebashepin --password ${{ secrets.NUGET_KEY }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/sebashepin/index.json"
