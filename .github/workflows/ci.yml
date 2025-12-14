@@ -5,14 +5,14 @@ on:
     branches: [ master ]
     paths:
       - 'src/RestaurantOrderManager.Backend/**'
-      - 'src/RestaurantOrderManager.Backend.Test/**'
+      - 'test/RestaurantOrderManager.Backend.Test/**'
       - 'RestaurantOrderManager.Backend.sln'
       - '.github/workflows/ci.yml'
   pull_request:
     branches: [ master ]
     paths:
       - 'src/RestaurantOrderManager.Backend/**'
-      - 'src/RestaurantOrderManager.Backend.Test/**'
+      - 'test/RestaurantOrderManager.Backend.Test/**'
       - 'RestaurantOrderManager.Backend.sln'
 
 jobs:
@@ -28,6 +28,9 @@ jobs:
         with:
           dotnet-version: '10.x'
           cache: true
+          
+      - name: Add nuget source
+        run: dotnet nuget add source --username sebashepin --password ${{ secrets.NUGET_KEY }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/sebashepin/index.json"
 
       - name: Restore
         run: dotnet restore RestaurantOrderManager.Backend.sln
