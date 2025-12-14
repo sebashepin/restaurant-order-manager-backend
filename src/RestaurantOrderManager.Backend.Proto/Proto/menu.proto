@@ -19,6 +19,9 @@ service Menu {
 
   // d) Gets all live order IDs for a given table
   rpc GetLiveOrdersForTable (GetLiveOrdersForTableRequest) returns (GetLiveOrdersForTableResponse);
+  
+  // e) Gets the contents of a given order
+  rpc GetOrderContents (GetOrderContentsRequest) returns (GetOrderContentsResponse);
 }
 
 // Common types
@@ -91,3 +94,15 @@ message GetLiveOrdersForTableResponse {
   repeated string order_ids = 1;
   google.protobuf.Timestamp timestamp = 2;   // server timestamp
 }
+
+message GetOrderContentsRequest {
+  string order_id = 1;
+  google.protobuf.Timestamp timestamp = 3;   // client timestamp
+}
+
+message GetOrderContentsResponse {
+  string order_id = 1;
+  repeated OrderLineItem items = 2;
+  google.protobuf.Timestamp timestamp = 3;   // server timestamp
+}
+    

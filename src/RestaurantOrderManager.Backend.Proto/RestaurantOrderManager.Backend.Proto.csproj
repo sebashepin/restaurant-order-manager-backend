@@ -10,7 +10,7 @@
         <!-- NuGet Package Metadata -->
         <PackageId>RestaurantOrderManager.Backend.Proto</PackageId>
         <Title>Restaurant Order Manager - gRPC Backend with Middleware</Title>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
         <Description>Complete gRPC backend service for Restaurant Order Manager. Includes protocol buffer definitions, generated C# stubs, service implementations, and ready-to-use middleware for ASP.NET Core integration. Provides menu management and ordering capabilities with built-in CORS and gRPC-Web support.</Description>
         <Authors>sebashepin</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
