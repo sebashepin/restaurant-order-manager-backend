@@ -1,4 +1,4 @@
-﻿namespace restaurant_order_manager_backend.Repositories;
+﻿namespace RestaurantOrderManager.Backend.Repositories;
 
 public class MenuRepository
 {
