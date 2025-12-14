@@ -22,6 +22,9 @@ service Menu {
   
   // e) Gets the contents of a given order
   rpc GetOrderContents (GetOrderContentsRequest) returns (GetOrderContentsResponse);
+  
+  // f) Changes the status of a given order (for internal use)
+  rpc ChangeOrderStatus (ChangeOrderStatusRequest) returns (ChangeOrderStatusResponse);
 }
 
 // Common types
@@ -103,6 +106,18 @@ message GetOrderContentsRequest {
 message GetOrderContentsResponse {
   string order_id = 1;
   repeated OrderLineItem items = 2;
+  google.protobuf.Timestamp timestamp = 3;   // server timestamp
+}
+
+message ChangeOrderStatusRequest {
+  string order_id = 1;
+  OrderStatus new_status = 2;
+  google.protobuf.Timestamp timestamp = 3;   // client timestamp
+}
+
+message ChangeOrderStatusResponse {
+  string order_id = 1;
+  OrderStatus updated_status = 2;
   google.protobuf.Timestamp timestamp = 3;   // server timestamp
 }
     
