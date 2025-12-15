@@ -35,3 +35,11 @@ Transport notes:
 - gRPC-Web is enabled, and a permissive CORS policy is configured for development.
 - Default dev URLs (from `launchSettings.json`): `http://localhost:5134`, `https://localhost:7088`.
 - A plain GET to `/` returns a help message indicating gRPC usage.
+
+## TODO
+
+- [ ] Data project (use Postgres)
+- [ ] Add tests (unit and integration)
+- [x] Add mDNS support for local development
+- [ ] Add health checks
+- [ ] Segregate proto files by concern

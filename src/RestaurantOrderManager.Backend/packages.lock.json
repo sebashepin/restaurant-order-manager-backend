@@ -19,15 +19,38 @@
         "resolved": "2.71.0",
         "contentHash": "qaLqHTnznXry7btpZaAAIiJJyNcs2V0u5XncXT1zBfPu83YtdvWbM2pam8ejj/4UNdHE85s+LzTAJaP8JhJjpw=="
       },
+      "Makaretu.Dns.Multicast.New": {
+        "type": "Direct",
+        "requested": "[0.38.0, )",
+        "resolved": "0.38.0",
+        "contentHash": "03h8IaKplBxXP842jEnH+VT3JbpSjJ7jjfbaIXDVkd5kWlk+jt59T1P9I1vrnx0jDZzXK1VqzFoD+UZnJesKYg==",
+        "dependencies": {
+          "Common.Logging": "3.4.1",
+          "Makaretu.Dns.New": "3.1.2"
+        }
+      },
       "RestaurantOrderManager.Backend.Proto": {
         "type": "Direct",
-        "requested": "[1.0.2, )",
-        "resolved": "1.0.2",
-        "contentHash": "P233ZEX46WUd0+PVSQMaX/gTPWrSASLgycosUR7lmzeiqyqjR6h4+2YSAt4vUNZ0RUojrbiadyV3UuFZ+COkvA==",
+        "requested": "[1.0.4, )",
+        "resolved": "1.0.4",
+        "contentHash": "HAQPKeTlHVfJZq72h/h1asm74RspE+PD5Cng9QHWQAMeiCiuaTl+YZrqjaWRBkSJ1Jp2Pzxy05/tvP05Oq/Mbg==",
         "dependencies": {
           "Google.Protobuf": "3.30.2",
           "Grpc.Core.Api": "2.46.6"
         }
+      },
+      "Common.Logging": {
+        "type": "Transitive",
+        "resolved": "3.4.1",
+        "contentHash": "5eZ/vgEOqzLg4PypZqnJ+wMhhgHyckicbZY4iDxqQ4FtOz0CpdYZ0xQ78aszMzeAJZiLLb5VdR9tPfunVQLz6g==",
+        "dependencies": {
+          "Common.Logging.Core": "3.4.1"
+        }
+      },
+      "Common.Logging.Core": {
+        "type": "Transitive",
+        "resolved": "3.4.1",
+        "contentHash": "wLHldZHvxsSD6Ahonfj00/SkfHfKqO+YT6jsUwVm8Rch1REL9IArHAcSLXxYxYfu5/4ydGtmXvOtaH3AkVPu0A=="
       },
       "Google.Protobuf": {
         "type": "Transitive",
@@ -84,6 +107,11 @@
         "type": "Transitive",
         "resolved": "2.71.0",
         "contentHash": "r8zHZm7kHdMrtujnkcuQ0BNDH2969at/8Va1ZzQgVblaQzR7tm8JlA3G+5Z5IFbvvf9PcAr1/VcoSR+g7j4Nyw=="
+      },
+      "Makaretu.Dns.New": {
+        "type": "Transitive",
+        "resolved": "3.1.2",
+        "contentHash": "lfIb0DccotDa52dVdim3KROZaxCqI1lkYdlTdxUxWaP2kkerQJm91udzQ9bGMjB+mL3V/OPpUwx3pRrsoKT47g=="
       }
     }
   }

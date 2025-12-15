@@ -1,3 +1,7 @@
+using Common.Logging;
+using Common.Logging.Simple;
+using Makaretu.Dns;
+using RestaurantOrderManager.Backend;
 using RestaurantOrderManager.Backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,4 +40,22 @@ app.MapGet("/",
     () =>
         "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
+if (app.Environment.IsDevelopment()) {
+    var serviceDiscover = new ServiceDiscovery();
+    SetupMdnsRecord(serviceDiscover, new ServiceProfile("restaurant", "orders._tcp", 7088));
+    SetupMdnsRecord(serviceDiscover, new ServiceProfile("restaurant", "menu._tcp", 7288));
+}
+
+
 await app.RunAsync();
+return;
+
+void SetupMdnsRecord(ServiceDiscovery serviceDiscovery, ServiceProfile serviceProfile)
+{
+    if (serviceDiscovery.Probe(serviceProfile))
+        throw new InvalidOperationException("Service is already running");
+    //Begin responding to queries for this service
+    serviceDiscovery.Advertise(serviceProfile);
+    //Notify listeners that the service is now available
+    serviceDiscovery.Announce(serviceProfile);
+}
