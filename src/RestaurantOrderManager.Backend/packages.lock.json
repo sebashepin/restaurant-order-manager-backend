@@ -31,9 +31,9 @@
       },
       "RestaurantOrderManager.Backend.Proto": {
         "type": "Direct",
-        "requested": "[1.0.4, )",
-        "resolved": "1.0.4",
-        "contentHash": "HAQPKeTlHVfJZq72h/h1asm74RspE+PD5Cng9QHWQAMeiCiuaTl+YZrqjaWRBkSJ1Jp2Pzxy05/tvP05Oq/Mbg==",
+        "requested": "[1.1.0, )",
+        "resolved": "1.1.0",
+        "contentHash": "UMDVAcjROegL/zxF7/mMoCkPh0I/EPFPEl4IWPkVKWDd5ouIN7EWcDYtnoo9P8aUgNGYqptjBVcCATUS06fIsg==",
         "dependencies": {
           "Google.Protobuf": "3.30.2",
           "Grpc.Core.Api": "2.46.6"

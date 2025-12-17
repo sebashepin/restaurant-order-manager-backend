@@ -1,17 +1,19 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using RestaurantOrderManager.Backend.Grpc;
+using RestaurantOrderManager.Backend.Repositories;
 
 namespace RestaurantOrderManager.Backend.Services;
 
-public class MenuService(ILogger<MenuService> logger) : Menu.MenuBase 
+public class MenuService(ILogger<MenuService> logger, IMenuRepository menuRepository) : Menu.MenuBase
 {
-    public override Task<GetMenuResponse> GetMenu(GetMenuRequest request, ServerCallContext context)
+    public override async Task<GetMenuResponse> GetMenu(GetMenuRequest request, ServerCallContext context)
     {
-        return Task.FromResult(new GetMenuResponse
+        var items = await menuRepository.GetMenuItems(context.CancellationToken);
+        return new GetMenuResponse
         {
-            Items = { new MenuItem { Name = "Pizza" } },
-            Timestamp = new Timestamp()
-        });
+            Items = { items },
+            Timestamp = Timestamp.FromDateTime(DateTime.UtcNow)
+        };
     }
 }

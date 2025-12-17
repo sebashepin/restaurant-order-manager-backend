@@ -1,7 +1,5 @@
-using Common.Logging;
-using Common.Logging.Simple;
 using Makaretu.Dns;
-using RestaurantOrderManager.Backend;
+using RestaurantOrderManager.Backend.Repositories;
 using RestaurantOrderManager.Backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,11 +21,13 @@ builder.Services.AddCors(o =>
             "grpc-accept-encoding",
             "accept",
             "user-agent")*/
-        //.WithExposedHeaders("grpc-status", "grpc-message", "grpc-encoding", "grpc-accept-encoding")
+        .WithExposedHeaders("grpc-status", "grpc-message", "grpc-encoding", "grpc-accept-encoding")
         .DisallowCredentials());
     o.AddDefaultPolicy( p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
 builder.Services.AddGrpc();
+builder.Services.AddScoped<IMenuRepository, MenuRepository>();
+builder.Services.AddScoped<IOrdersRepository, OrdersRepository>();
 
 var app = builder.Build();
 
@@ -36,6 +36,8 @@ app.UseRouting();
 app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
 app.UseCors(wasmCorsPolicyName);
 app.MapGrpcService<MenuService>().EnableGrpcWeb().RequireCors(wasmCorsPolicyName);
+app.MapGrpcService<OrdersService>().EnableGrpcWeb().RequireCors(wasmCorsPolicyName);
+app.MapGrpcService<TableService>().EnableGrpcWeb().RequireCors(wasmCorsPolicyName);
 app.MapGet("/",
     () =>
         "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
