@@ -10,7 +10,7 @@
         <!-- NuGet Package Metadata -->
         <PackageId>RestaurantOrderManager.Backend.Proto</PackageId>
         <Title>Restaurant Order Manager - gRPC Backend with Middleware</Title>
-        <Version>1.0.4</Version>
+        <Version>1.1.0</Version>
         <Description>Complete gRPC backend service for Restaurant Order Manager. Includes protocol buffer definitions, generated C# stubs, service implementations, and ready-to-use middleware for ASP.NET Core integration. Provides menu management and ordering capabilities with built-in CORS and gRPC-Web support.</Description>
         <Authors>sebashepin</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -33,6 +33,22 @@
         <CompileOutputs>True</CompileOutputs>
       </Protobuf>
       <None Include="Proto\menu.proto" Pack="true" PackagePath="Proto\" />
+      <Protobuf Include="Proto\orders.proto">
+        <GrpcServices>Both</GrpcServices>
+        <Access>Public</Access>
+        <ProtoCompile>True</ProtoCompile>
+        <CompileOutputs>True</CompileOutputs>
+        <OutputDir>obj\Release\netstandard2.0\</OutputDir>
+        <Generator>MSBuild:Compile</Generator>
+      </Protobuf>
+      <Protobuf Include="Proto\table.proto">
+        <GrpcServices>Both</GrpcServices>
+        <Access>Public</Access>
+        <ProtoCompile>True</ProtoCompile>
+        <CompileOutputs>True</CompileOutputs>
+        <OutputDir>obj\Release\netstandard2.0\</OutputDir>
+        <Generator>MSBuild:Compile</Generator>
+      </Protobuf>
     </ItemGroup>
 
     <ItemGroup>

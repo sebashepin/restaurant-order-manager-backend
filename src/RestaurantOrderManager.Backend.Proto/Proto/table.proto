@@ -1,0 +1,28 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "RestaurantOrderManager.Backend.Grpc";
+
+package menu;
+
+import "google/protobuf/timestamp.proto";
+
+// Service exposing table operations
+service Table {
+  rpc GetTableList (GetTableListRequest) returns (GetTableListResponse);
+}
+
+message GetTableListRequest {
+  google.protobuf.Timestamp timestamp = 1;   // client timestamp
+}
+
+message TableInfo {
+  string table_id = 1;
+  string description = 2; // e.g., "Table near window"
+  uint32 seats = 3;        // number of seats
+}
+
+message GetTableListResponse {
+  repeated TableInfo tables = 1;
+  google.protobuf.Timestamp timestamp = 2;   // server timestamp
+}
+    
